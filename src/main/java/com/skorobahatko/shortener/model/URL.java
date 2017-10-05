@@ -14,7 +14,7 @@ public class URL implements Serializable {
     @Column(name="id")
     private long id;
 
-    @Column(name="url")
+    @Column(name="value")
     private String url;
 
     public URL() {}
@@ -41,8 +41,6 @@ public class URL implements Serializable {
 
     @Override
     public String toString() {
-        return "URL{" +
-                "url='" + url + '\'' +
-                '}';
+        return "URL{'" + url + "'}";
     }
 }
