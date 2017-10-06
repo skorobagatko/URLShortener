@@ -22,7 +22,6 @@ public class URLDaoImpl implements URLDao {
     }
 
     @Override
-    @Transactional
     public long save(final URL url) throws DatabaseURLSaveException {
         try {
             Session session = sessionFactory.getCurrentSession();
@@ -34,21 +33,21 @@ public class URLDaoImpl implements URLDao {
     }
 
     @Override
-    @Transactional
     public URL getById(long id) throws DatabaseURLGetException {
         try {
-            Session session = sessionFactory.openSession();
-            return session.load(URL.class, id);
+            Session session = sessionFactory.getCurrentSession();
+            return (URL) session.get(URL.class, id);
         } catch (HibernateException e) {
             throw new DatabaseURLGetException("Can't get URL from database", e);
         }
     }
 
+    @SuppressWarnings("unchecked")
     private long getId(Session session, final URL originalURL) throws HibernateException {
-        Query query = session.createQuery("FROM URL WHERE value = :value");
+        Query<URL> query = session.createQuery("FROM URL WHERE value = :value");
         query.setParameter("value", originalURL.getUrl());
-        List<URL> list = query.list();
-        return list.get(0).getId();
+        URL result = query.getSingleResult();
+        return result.getId();
     }
 
 }
