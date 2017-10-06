@@ -7,6 +7,7 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
+import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -33,10 +34,10 @@ public class URLDaoImpl implements URLDao {
     }
 
     @Override
-    public URL getById(long id) throws DatabaseURLGetException {
+    public @Nullable URL getById(long id) throws DatabaseURLGetException {
         try {
             Session session = sessionFactory.getCurrentSession();
-            return (URL) session.get(URL.class, id);
+            return session.get(URL.class, id);
         } catch (HibernateException e) {
             throw new DatabaseURLGetException("Can't get URL from database", e);
         }

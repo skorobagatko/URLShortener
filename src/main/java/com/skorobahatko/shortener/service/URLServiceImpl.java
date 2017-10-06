@@ -4,6 +4,7 @@ import com.skorobahatko.shortener.dao.URLDao;
 import com.skorobahatko.shortener.model.URL;
 import com.skorobahatko.shortener.exception.DatabaseException;
 import com.skorobahatko.shortener.util.Base62Converter;
+import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -30,7 +31,7 @@ public class URLServiceImpl implements URLService {
 
     @Override
     @Transactional
-    public URL getOriginalURL(final URL shortURL) throws DatabaseException {
+    public @Nullable URL getOriginalURL(final URL shortURL) throws DatabaseException {
         // Prepare url value (get base 62 value from it)
         String base62 = truncate(shortURL.getUrl());
         // Convert base62 value to url's id in database
