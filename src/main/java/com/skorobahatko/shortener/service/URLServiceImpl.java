@@ -11,8 +11,6 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class URLServiceImpl implements URLService {
 
-    private static final String DEFAULT_DOMAIN = "domain.com";
-
     private String domain;
 
     private URLDao urlDao;
