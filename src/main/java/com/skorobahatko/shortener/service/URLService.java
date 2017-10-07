@@ -5,7 +5,7 @@ import com.skorobahatko.shortener.exception.DatabaseException;
 
 public interface URLService {
 
-    URL getShortenedURL(URL url) throws DatabaseException;
-    URL getOriginalURL(URL url) throws DatabaseException;
+    String getShortenedURL(String originalURL) throws DatabaseException;
+    String getOriginalURL(String shortURL) throws DatabaseException;
 
 }
