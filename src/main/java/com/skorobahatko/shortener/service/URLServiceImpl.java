@@ -17,25 +17,24 @@ public class URLServiceImpl implements URLService {
 
     @Override
     @Transactional
-    public URL getShortenedURL(final URL url) throws DatabaseException {
+    public String getShortenedURL(String originalURL) throws DatabaseException {
         // save original url to DB and get it's ID
-        long id = urlDao.save(url);
+        long id = urlDao.save(new URL(originalURL));
         // send ID to converter and get result in 62 base
         String base62 = Base62Converter.convertToBase62(id);
         // build result shortened URL
-        String shortenedURL = domain + "/" + base62;
-        return new URL(shortenedURL);
+        return domain + "/" + base62;
     }
 
     @Override
     @Transactional
-    public @Nullable URL getOriginalURL(final URL shortURL) throws DatabaseException {
+    public @Nullable String getOriginalURL(String shortURL) throws DatabaseException {
         // Prepare url value (get base 62 value from it)
-        String base62 = truncate(shortURL.getUrl());
+        String base62 = (shortURL.contains("/")) ? truncate(shortURL) : shortURL;
         // Convert base62 value to url's id in database
         Long id = Base62Converter.convertFromBase62(base62);
         // Get url from database by it's ID and return it
-        return urlDao.getById(id);
+        return urlDao.getById(id).getUrl();
     }
 
     private static String truncate(final String url) {
