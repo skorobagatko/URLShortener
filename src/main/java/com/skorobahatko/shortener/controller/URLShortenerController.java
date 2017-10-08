@@ -4,6 +4,7 @@ import com.skorobahatko.shortener.exception.DatabaseException;
 import com.skorobahatko.shortener.service.URLService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,16 +23,25 @@ public class URLShortenerController {
         this.urlService = urlService;
     }
 
-    @RequestMapping(value = "/short", method = RequestMethod.POST)
-    public String getShortenedUrl(@RequestParam("url") String url) {
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public String index() {
+        return "index";
+    }
+
+    @RequestMapping(value = "/", method = RequestMethod.POST)
+    public ModelAndView getShortenedUrl(@RequestParam("url") String url) {
         try {
             String shortURL = urlService.getShortenedURL(url);
             System.out.println(shortURL);
-            return "index";
+            ModelAndView mav = new ModelAndView();
+            mav.addObject("shortUrl", shortURL);
+            mav.setViewName("index");
+            mav.setStatus(HttpStatus.OK);
+            return mav;
         } catch (DatabaseException e) {
             //TODO: redirect to main page and print some error message
             e.printStackTrace();
-            return "index";
+            return new ModelAndView("index");
         }
     }
 
@@ -46,4 +56,5 @@ public class URLShortenerController {
             return "index";
         }
     }
+
 }
