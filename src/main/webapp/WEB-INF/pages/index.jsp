@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html lang="en">
 <head>
     <title>URL Shortener</title>
@@ -7,14 +7,13 @@
     <meta name="keywords" content="url shortener" />
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 
-    <link href="css/style.css" rel="stylesheet" type="text/css" media="all" /><!-- stylesheet -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link href="<c:url value="/resources/css/style.css" />" rel="stylesheet" type="text/css" media="all" />
+    <script src="<c:url value="/resources/js/jquery-3.2.1.min.js" />"></script>
     <!--fonts-->
-    <link href="//fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&subset=latin-ext" rel="stylesheet">
+    <link href="http://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&subset=latin-ext" rel="stylesheet">
     <!--/fonts-->
 </head>
 <body>
-<!-- main-section -->
 <div class="container demo-1">
     <div class="content">
         <div id="large-header" class="large-header">
@@ -25,8 +24,8 @@
 
                 <div class="url-shortener">
                     <h2>Be the first to Know when website is ready</h2>
-                    <form action="#" method="post">
-                        <input type="email" name="email" required="true" placeholder="URL" />
+                    <form action="${pageContext.request.contextPath}/short" method="post">
+                        <input type="url" name="url" required="true" placeholder="http://" />
                         <input type="submit" value="Get short" />
                         <div class="clear"></div>
                     </form>
@@ -38,9 +37,8 @@
         </div>
     </div>
 </div>
-<!-- /main-section -->
 <!-- particles effect -->
-<script src="js/particles.min.js"></script>
+<script src="<c:url value="/resources/js/particles.min.js" />"></script>
 <script>
     window.onload = function() {
         Particles.init({
@@ -53,6 +51,4 @@
 </script>
 <!-- //particles effect -->
 </body>
-<!-- //Body -->
 </html>
-<!-- //Html -->
