@@ -23,8 +23,17 @@ public class URLDaoImpl implements URLDao {
     public long save(final URL url) throws DatabaseURLSaveException {
         try {
             Session session = sessionFactory.getCurrentSession();
-            session.persist(url);
-            return getId(session, url);
+            // Check if url is already in database
+            URL urlFromDB = getUrlFromDatabase(session, url);
+            if (urlFromDB == null) {
+                // Add new url to database
+                session.persist(url);
+                // Return id from database for this new url
+                return getId(session, url);
+            } else {
+                // return id of equal url in database
+                return getId(session, urlFromDB);
+            }
         } catch (HibernateException e) {
             throw new DatabaseURLSaveException("Can't save URL to database", e);
         }
@@ -38,6 +47,13 @@ public class URLDaoImpl implements URLDao {
         } catch (HibernateException e) {
             throw new DatabaseURLGetException("Can't get URL from database", e);
         }
+    }
+
+    @SuppressWarnings("unchecked")
+    private URL getUrlFromDatabase(Session session, URL url) {
+        Query<URL> query = session.createQuery("FROM URL WHERE value = :value");
+        query.setParameter("value", url.getUrl());
+        return query.uniqueResult();
     }
 
     @SuppressWarnings("unchecked")
