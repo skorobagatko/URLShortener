@@ -24,11 +24,15 @@
 
                 <div class="url-shortener">
                     <h2>Be the first to Know when website is ready</h2>
-                    <form action="${pageContext.request.contextPath}/short" method="post">
+                    <form action="${pageContext.request.contextPath}/" method="post">
                         <input type="url" name="url" required="true" placeholder="http://" />
                         <input type="submit" value="Get short" />
                         <div class="clear"></div>
                     </form>
+
+                    <div class="shortened-url">
+                        <h2>${shortUrl}</h2>
+                    </div>
                 </div>
                 <footer>
                     <p class="agileinfo txt-center"> &copy; 2016 Awesome Coming soon Widget. All Rights Reserved | Design by  <a href="http://w3layouts.com/"> W3layouts</a></p>
