@@ -119,6 +119,10 @@ p.agileinfo a:hover {
 	-o-transition:0.5s all;
 }
 
+.url-shortener .shortened-url {
+	min-height: 30px;
+}
+
 .url-shortener .shortened-url h2 {
 	color: #fff;
 	font-size: 0.33em;
