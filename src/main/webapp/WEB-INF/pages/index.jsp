@@ -19,11 +19,11 @@
         <div id="large-header" class="large-header">
             <canvas id="myCanvas"></canvas>
             <div class="main-title">
-                <h1>We are Coming Soon</h1>
+                <h1>Let's shorten this url!</h1>
                 <div class="demo2"></div>
 
                 <div class="url-shortener">
-                    <h2>Be the first to Know when website is ready</h2>
+                    <%--<h2>Be the first to Know when website is ready</h2>--%>
                     <form action="${pageContext.request.contextPath}/" method="post">
                         <input type="url" name="url" required="true" placeholder="http://" />
                         <input type="submit" value="Get short" />
@@ -32,6 +32,7 @@
 
                     <div class="shortened-url">
                         <h2>${shortUrl}</h2>
+                        <%--<h2>${message}</h2>--%>
                     </div>
                 </div>
                 <footer>
