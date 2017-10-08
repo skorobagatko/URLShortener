@@ -43,7 +43,10 @@ public class URLDaoImpl implements URLDao {
     public @Nullable URL getById(long id) throws DatabaseURLGetException {
         try {
             Session session = sessionFactory.getCurrentSession();
-            return session.get(URL.class, id);
+            URL result = session.get(URL.class, id);
+            if (result == null)
+                throw new DatabaseURLGetException("ID " + id + " has no mapped url in database");
+            return result;
         } catch (HibernateException e) {
             throw new DatabaseURLGetException("Can't get URL from database", e);
         }
