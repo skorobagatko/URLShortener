@@ -39,21 +39,22 @@ public class URLShortenerController {
             mav.setStatus(HttpStatus.OK);
             return mav;
         } catch (DatabaseException e) {
-            //TODO: redirect to main page and print some error message
             e.printStackTrace();
             return new ModelAndView("index");
         }
     }
 
     @RequestMapping(value = "/{shortUrl}", method = RequestMethod.GET)
-    public String getOriginalUrl(@PathVariable String shortUrl) {
+    public ModelAndView getOriginalUrl(@PathVariable String shortUrl) {
         try {
             String originalURL = urlService.getOriginalURL(shortUrl);
-            return "redirect:" + originalURL;
+            return new ModelAndView("redirect:" + originalURL);
         } catch (DatabaseException e) {
-            //TODO: redirect to main page and print some error message
-            e.printStackTrace();
-            return "index";
+            ModelAndView mav = new ModelAndView();
+            String message = "There is no URL associated with " + shortUrl;
+            mav.addObject("shortUrl", message);
+            mav.setViewName("index");
+            return mav;
         }
     }
 
