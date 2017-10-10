@@ -1,0 +1,4 @@
+CREATE TABLE `heroku_9e701fd88c5e430`.`url` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `value` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id`));
