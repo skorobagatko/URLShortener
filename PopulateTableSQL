@@ -1,0 +1,6 @@
+INSERT INTO `heroku_9e701fd88c5e430`.`url` (`value`) VALUES ('http://google.com');
+INSERT INTO `heroku_9e701fd88c5e430`.`url` (`value`) VALUES ('http://heroku.com');
+INSERT INTO `heroku_9e701fd88c5e430`.`url` (`value`) VALUES ('http://youtube.com');
+INSERT INTO `heroku_9e701fd88c5e430`.`url` (`value`) VALUES ('http://oracle.com');
+INSERT INTO `heroku_9e701fd88c5e430`.`url` (`value`) VALUES ('http://www.microsoft.com');
+INSERT INTO `heroku_9e701fd88c5e430`.`url` (`value`) VALUES ('https://github.com');
