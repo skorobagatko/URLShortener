@@ -32,10 +32,10 @@
 
                     <div class="shortened-url">
                         <h2>${shortUrl}</h2>
-                        <%--<h2>${message}</h2>--%>
                     </div>
                 </div>
                 <footer>
+                    <p class="copyright"> &copy; 2017 Stanislav Skorobahatko</p>
                     <p class="agileinfo txt-center"> &copy; 2016 Awesome Coming soon Widget. All Rights Reserved | Design by  <a href="http://w3layouts.com/"> W3layouts</a></p>
                 </footer>
             </div>
