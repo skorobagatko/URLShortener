@@ -46,15 +46,7 @@ h1 {
 	margin-bottom: 40px;
 }
 
-p.copyright {
-	font-size: 0.23em;
-	letter-spacing: 2px;
-	text-transform: capitalize;
-	color:#fff;
-	margin-top: 4em;
-}
-
-p.agileinfo {
+p.agileinfo, p.copyright {
     font-size: 0.23em;
     letter-spacing: 2px;
     text-transform: capitalize;
@@ -82,10 +74,16 @@ p.agileinfo a:hover {
     letter-spacing: 2px;
 	margin-bottom:15px;
 }
-.url-shortener form {
+.url-shortener #long-url-form {
     width: 65%;
     margin: 0 auto;
 }
+
+.url-shortener #short-url-form {
+	width: 65%;
+	margin: 10px auto 0;
+}
+
 .url-shortener input[type="url"] {
     padding: 15px 2%;
     width: 75%;
