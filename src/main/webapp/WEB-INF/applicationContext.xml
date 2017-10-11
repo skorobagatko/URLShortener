@@ -67,7 +67,7 @@
 
     <bean id="urlService" class="com.skorobahatko.shortener.service.URLServiceImpl">
         <property name="urlDao" ref="urlDao"/>
-        <property name="domain" value="domain.com"/>
+        <property name="domain" value="shortify.tk"/>
     </bean>
 
 </beans>
