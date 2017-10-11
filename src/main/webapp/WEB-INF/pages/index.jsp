@@ -2,15 +2,22 @@
 <html lang="en">
 <head>
     <title>URL Shortener</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="keywords" content="url shortener" />
-    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="keywords" content="url shortener"/>
+    <script type="application/x-javascript"> addEventListener("load", function () {
+        setTimeout(hideURLbar, 0);
+    }, false);
 
-    <link href="<c:url value="/resources/css/style.css" />" rel="stylesheet" type="text/css" media="all" />
+    function hideURLbar() {
+        window.scrollTo(0, 1);
+    } </script>
+
+    <link href="<c:url value="/resources/css/style.css" />" rel="stylesheet" type="text/css" media="all"/>
     <script src="<c:url value="/resources/js/jquery-3.2.1.min.js" />"></script>
     <!--fonts-->
-    <link href="http://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&subset=latin-ext" rel="stylesheet">
+    <link href="http://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&subset=latin-ext"
+          rel="stylesheet">
     <!--/fonts-->
 </head>
 <body>
@@ -24,19 +31,23 @@
 
                 <div class="url-shortener">
                     <%--<h2>Be the first to Know when website is ready</h2>--%>
-                    <form action="${pageContext.request.contextPath}/" method="post">
-                        <input type="url" name="url" required="true" placeholder="http://" />
-                        <input type="submit" value="Get short" />
+                    <form id="long-url-form" action="${pageContext.request.contextPath}/" method="post">
+                        <input type="url" name="url" required="true" placeholder="Some long URL..."/>
+                        <input type="submit" value="Get short"/>
                         <div class="clear"></div>
                     </form>
 
-                    <div class="shortened-url">
-                        <h2>${shortUrl}</h2>
-                    </div>
+                    <form id="short-url-form">
+                        <input type="url" name="short-url" placeholder="Your short URL..." value="${shortUrl}"/>
+                        <input type="submit" value="Copy"/>
+                        <div class="clear"></div>
+                    </form>
                 </div>
+
                 <footer>
                     <p class="copyright"> &copy; 2017 Stanislav Skorobahatko</p>
-                    <p class="agileinfo txt-center"> &copy; 2016 Awesome Coming soon Widget. All Rights Reserved | Design by  <a href="http://w3layouts.com/"> W3layouts</a></p>
+                    <p class="agileinfo txt-center"> &copy; 2016 Awesome Coming soon Widget. All Rights Reserved |
+                        Design by <a href="http://w3layouts.com/"> W3layouts</a></p>
                 </footer>
             </div>
         </div>
@@ -45,7 +56,7 @@
 <!-- particles effect -->
 <script src="<c:url value="/resources/js/particles.min.js" />"></script>
 <script>
-    window.onload = function() {
+    window.onload = function () {
         Particles.init({
             selector: '#myCanvas',
             color: '#6a446b',
