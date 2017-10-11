@@ -37,12 +37,14 @@
                         <div class="clear"></div>
                     </form>
 
-                    <form id="short-url-form">
-                        <input type="url" name="short-url" placeholder="Your short URL..." value="${shortUrl}"/>
-                        <input type="submit" value="Copy"/>
+                    <form id="short-url-form" onsubmit="return false;">
+                        <input type="url" name="short-url" id="short-url" readonly placeholder="Your short URL..." value="${shortUrl}"/>
+                        <input type="submit" value="Copy" class="copy-btn" data-clipboard-target="#short-url"/>
                         <div class="clear"></div>
                     </form>
                 </div>
+
+                <div class="spacer"></div>
 
                 <footer>
                     <p class="copyright"> &copy; 2017 Stanislav Skorobahatko</p>
@@ -66,5 +68,11 @@
     };
 </script>
 <!-- //particles effect -->
+
+<script src="<c:url value="/resources/js/clipboard.min.js" />"></script>
+<script>
+    new Clipboard('.copy-btn');
+</script>
+
 </body>
 </html>
