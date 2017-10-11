@@ -137,6 +137,10 @@ p.agileinfo a:hover {
 	margin-bottom:15px;
 }
 
+.spacer {
+	min-height: 50px;
+}
+
 input::-webkit-input-placeholder {
 color: #fff !important;
 }
